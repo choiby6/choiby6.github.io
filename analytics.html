@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Advanced baseball metrics like WAR and OPS+ explained with plain-language examples." />
+  <title>Diamond Data • Advanced Analytics</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<!-- Apply saved theme ASAP (site-wide) -->
+<script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Diamond Data</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="batting.html">Batting Stats</a>
+        <a href="pitching.html">Pitching Stats</a>
+        <a class="active" href="analytics.html">Advanced Analytics</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Advanced Analytics</h2>
+    <div class="card">
+      <h3>What is WAR?</h3>
+      <p>WAR (Wins Above Replacement) estimates a player’s total value in wins compared to a replacement-level player. It rolls offense, defense, and baserunning (and for pitchers, run prevention) into one number.</p>
+    </div>
+
+    <div class="card">
+      <h3>OPS+</h3>
+      <p>OPS+ adjusts a player’s OPS for park and league effects; 100 is league average, above 100 is better than average.</p>
+    </div>
+
+    <div class="card">
+      <h3>Optional: YouTube explainer</h3>
+      <p>You can embed a short video here to complement your local video on the Home page.</p>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Diamond Data</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
