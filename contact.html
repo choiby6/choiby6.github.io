@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact Diamond Data to ask a question or suggest a stat to add." />
+  <title>Diamond Data • Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<!-- Apply saved theme ASAP (site-wide) -->
+<script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Diamond Data</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="batting.html">Batting Stats</a>
+        <a href="pitching.html">Pitching Stats</a>
+        <a href="analytics.html">Advanced Analytics</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Contact</h2>
+    <p>Questions, feedback, or stat suggestions? Send a note below.</p>
+
+    <form action="#" method="post" class="card">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required />
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required />
+
+      <label for="topic">Topic</label>
+      <select id="topic" name="topic">
+        <option>Batting Stats</option>
+        <option>Pitching Stats</option>
+        <option>Advanced Analytics</option>
+        <option>General Question</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+
+    <p>Or email me at <a href="mailto:youremail@example.com">youremail@example.com</a>.</p>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Diamond Data</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
