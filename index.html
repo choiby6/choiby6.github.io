@@ -1,12 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cade Hoiby's First Website</title>
-    <link rel="stylesheet" href="styles.css"
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Diamond Data: a simple, visual guide to baseball statistics for fans and fantasy players." />
+  <title>Diamond Data • Home</title>
+
+  <!-- Apply saved theme ASAP (prevents flash) -->
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem('dd-theme');
+        if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-Hello, world! I am Cade Hoiby. I am learning how to create websites.
+<body class="page-home">
+  <header>
+    <div class="container bar">
+      <h1>Diamond Data</h1>
+
+      <nav aria-label="Primary">
+        <a class="active" href="index.html">Home</a>
+        <a href="batting.html">Batting Stats</a>
+        <a href="pitching.html">Pitching Stats</a>
+        <a href="analytics.html">Advanced Analytics</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Theme Toggle -->
+      <label class="theme-toggle" aria-label="Toggle dark mode">
+        <span>Dark</span>
+        <span class="switch">
+          <input id="themeSwitch" type="checkbox" />
+          <span class="slider" aria-hidden="true"></span>
+        </span>
+      </label>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h2>Baseball stats made simple</h2>
+      <p>
+        Learn what batting, pitching, and advanced metrics actually mean—with plain-language
+        explanations and quick examples you can use for watching games or setting fantasy lineups.
+      </p>
+      <a class="btn" href="batting.html">Start with Batting →</a>
+    </section>
+
+    <section class="card welcome-feature">
+  <h2>Featured Spotlight</h2>
+  <p>
+    Explore iconic players, memorable seasons, and legendary performances.
+    Each stat tells a story — learn how to read the numbers behind the game.
+  </p>
+</section>
+
+
+    <section class="card" aria-labelledby="useful-link">
+      <h2 id="useful-link">Useful Link</h2>
+      <p>
+        Official definitions: <a href="https://www.mlb.com/glossary" target="_blank" rel="noopener">MLB Glossary</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Diamond Data •
+        <a href="mailto:youremail@example.com">youremail@example.com</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts: year + theme toggle (persists in localStorage) -->
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (Home only)
+    (function () {
+      const html = document.documentElement;
+      const sw = document.getElementById('themeSwitch');
+
+      // Initialize from saved preference
+      try {
+        const saved = localStorage.getItem('dd-theme');
+        if (saved === 'dark') {
+          html.setAttribute('data-theme', 'dark');
+          if (sw) sw.checked = true;
+        }
+      } catch (e) {}
+
+      // Save + apply on change
+      if (sw) {
+        sw.addEventListener('change', () => {
+          const dark = sw.checked;
+          try {
+            if (dark) {
+              html.setAttribute('data-theme', 'dark');
+              localStorage.setItem('dd-theme', 'dark');
+            } else {
+              html.removeAttribute('data-theme');
+              localStorage.setItem('dd-theme', 'light');
+            }
+          } catch (e) {}
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
