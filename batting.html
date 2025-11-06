@@ -1,0 +1,248 @@
+/* =========================================================
+   Diamond Data — Global Styles (Light/Dark with Toggle)
+   Paste this entire file as styles.css
+   ========================================================= */
+
+/* 1) Color tokens (LIGHT) — from your previous export */
+:root {
+  --text: #0f0315;
+  --background: #fbfbfe;
+  --primary: #2f27ce;
+  --secondary: #dedcff;
+  --accent: #433bff;
+
+  /* Derived */
+  --muted: #f2f2ff;
+  --border: #e8e8f8;
+  --shadow: rgba(0, 0, 0, 0.06);
+  --ring: #8e86ff;
+}
+
+/* 2) Color tokens (DARK) — YOUR NEW PALETTE */
+html[data-theme="dark"] {
+  --text: #f5e9fc;
+  --background: #010104;
+  --primary: #3a31d8;
+  --secondary: #020024;
+  --accent: #0600c2;
+
+  --muted: #0a0a18;       /* subtle surface */
+  --border: #141428;      /* card/table borders */
+  --shadow: rgba(0, 0, 0, 0.55);
+  --ring: #6f6aff;        /* focus ring visible on dark */
+}
+
+/* 3) Reset & base */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  color: var(--text);
+  background: var(--background);
+  font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 4) Containers & layout */
+.container {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px var(--shadow);
+}
+header .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: .2rem 0 .6rem;
+}
+
+/* 5) Nav */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 600;
+}
+nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+nav a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 6) Sections & cards */
+main { padding: 1.25rem 0 2rem; }
+
+.hero {
+  background: var(--muted);
+  border: 1px solid var(--border);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* 7) Buttons & links */
+button, .btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text);
+  border: 0;
+  padding: .6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 700;
+  transition: transform .06s ease, box-shadow .12s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+button:hover, .btn:hover { transform: translateY(-1px); }
+button:active, .btn:active { transform: translateY(0); }
+button:focus-visible, .btn:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+a { color: var(--accent); }
+a:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 8) Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background: var(--background);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+th, td { padding: .75rem; border-bottom: 1px solid var(--border); text-align: left; }
+th {
+  /* Fallback first: */
+  background: var(--secondary);
+  /* If browser supports color-mix, this softens the header bg: */
+  background: color-mix(in oklab, var(--secondary) 60%, var(--background));
+}
+
+/* 9) Forms */
+form label { display: block; margin: .75rem 0 .25rem; font-weight: 600; }
+input, select, textarea {
+  width: 100%;
+  padding: .6rem;
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--text);
+  border-radius: 10px;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 1px;
+}
+
+/* 10) Media */
+video, img { border-radius: 12px; max-width: 100%; height: auto; display: block; }
+
+/* 11) Footer */
+footer {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+  color: rgba(127, 127, 127, .9);
+  font-size: .95rem;
+}
+
+/* 12) Theme Toggle (switch) */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  color: #fff; /* lives in header */
+  user-select: none;
+  font-weight: 600;
+}
+.switch {
+  position: relative;
+  width: 46px;
+  height: 26px;
+  display: inline-block;
+}
+.switch input {
+  opacity: 0;
+  width: 0; height: 0;
+}
+.slider {
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,.35);
+  border-radius: 999px;
+  transition: background .2s ease;
+}
+.slider::before {
+  content: "";
+  position: absolute; left: 3px; top: 3px;
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform .2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+.switch input:checked + .slider {
+  background: rgba(255,255,255,.6);
+}
+.switch input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* 13) Small screens */
+@media (max-width: 640px) {
+  nav { display: flex; flex-wrap: wrap; gap: .5rem; }
+  nav a { margin: 0 .5rem 0 0; }
+}
+.welcome-feature {
+  text-align: center;
+}
+
+.feature-img-box {
+  width: 100%;
+  max-height: 280px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.feature-img-box img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
