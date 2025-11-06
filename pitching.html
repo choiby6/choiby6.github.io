@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  })();
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Pitching stats explained: ERA, WHIP, K% with examples." />
+  <title>Diamond Data • Pitching Stats</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<!-- Apply saved theme ASAP (site-wide) -->
+<script>
+  (function () {
+    try {
+      const saved = localStorage.getItem('dd-theme');
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<body>
+  <header>
+    <div class="container">
+      <h1>Diamond Data</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="batting.html">Batting Stats</a>
+        <a class="active" href="pitching.html">Pitching Stats</a>
+        <a href="analytics.html">Advanced Analytics</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Pitching Statistics</h2>
+    <div class="card">
+      <h3>Core Metrics</h3>
+      <ul>
+        <li><strong>ERA</strong> = (Earned Runs × 9) ÷ Innings Pitched</li>
+        <li><strong>WHIP</strong> = (Walks + Hits) ÷ Innings Pitched</li>
+        <li><strong>K%</strong> = Strikeouts ÷ Batters Faced</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p>For more definitions, see the <a href="https://www.mlb.com/glossary" target="_blank" rel="noopener">MLB Glossary</a>.</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Diamond Data</p>
+    </div>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
