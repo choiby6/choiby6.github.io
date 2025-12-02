@@ -18,6 +18,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body class="page-home">
   <header>
     <div class="container bar">
@@ -43,6 +44,8 @@
   </header>
 
   <main class="container">
+
+    <!-- HERO SECTION -->
     <section class="hero">
       <h2>Baseball stats made simple</h2>
       <p>
@@ -52,21 +55,52 @@
       <a class="btn" href="batting.html">Start with Batting →</a>
     </section>
 
+    <!-- MEDIA ROW: Image – Video – Image -->
+    <section class="card media-row" aria-labelledby="highlight-title">
+      <h2 id="highlight-title">Game-Day Highlight</h2>
+      <p>A quick look at the action on the field.</p>
+
+      <div class="media-grid">
+        <div class="media-item">
+          <img src="./media/baseball-1407798_1920.jpg" alt="Batter swinging at a pitch" />
+        </div>
+
+        <div class="media-item">
+          <video
+            class="highlight-video"
+            controls
+            preload="metadata"
+            playsinline
+            poster="./media/baseball-4359434_1920.jpg">
+            <source src="./media/highlight.mp4.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="media-item">
+          <img src="./media/baseball-4359434_1920.jpg" alt="Baseball field from above" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED SPOTLIGHT -->
     <section class="card welcome-feature">
-  <h2>Featured Spotlight</h2>
-  <p>
-    Explore iconic players, memorable seasons, and legendary performances.
-    Each stat tells a story — learn how to read the numbers behind the game.
-  </p>
-</section>
+      <h2>Featured Spotlight</h2>
+      <p>
+        Explore iconic players, memorable seasons, and legendary performances.
+        Each stat tells a story — learn how to read the numbers behind the game.
+      </p>
+    </section>
 
-
+    <!-- USEFUL LINK -->
     <section class="card" aria-labelledby="useful-link">
       <h2 id="useful-link">Useful Link</h2>
       <p>
-        Official definitions: <a href="https://www.mlb.com/glossary" target="_blank" rel="noopener">MLB Glossary</a>.
+        Official definitions:
+        <a href="https://www.mlb.com/glossary" target="_blank" rel="noopener">MLB Glossary</a>.
       </p>
     </section>
+
   </main>
 
   <footer>
@@ -77,40 +111,28 @@
     </div>
   </footer>
 
-  <!-- Scripts: year + theme toggle (persists in localStorage) -->
   <script>
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Theme toggle (Home only)
+    // Theme toggle
     (function () {
-      const html = document.documentElement;
-      const sw = document.getElementById('themeSwitch');
+      const checkbox = document.getElementById('themeSwitch');
+      if (!checkbox) return;
 
-      // Initialize from saved preference
+      // Set initial state from storage
       try {
         const saved = localStorage.getItem('dd-theme');
-        if (saved === 'dark') {
-          html.setAttribute('data-theme', 'dark');
-          if (sw) sw.checked = true;
-        }
+        checkbox.checked = saved === 'dark';
       } catch (e) {}
 
-      // Save + apply on change
-      if (sw) {
-        sw.addEventListener('change', () => {
-          const dark = sw.checked;
-          try {
-            if (dark) {
-              html.setAttribute('data-theme', 'dark');
-              localStorage.setItem('dd-theme', 'dark');
-            } else {
-              html.removeAttribute('data-theme');
-              localStorage.setItem('dd-theme', 'light');
-            }
-          } catch (e) {}
-        });
-      }
+      checkbox.addEventListener('change', function () {
+        const isDark = checkbox.checked;
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        try {
+          localStorage.setItem('dd-theme', isDark ? 'dark' : 'light');
+        } catch (e) {}
+      });
     })();
   </script>
 </body>
